@@ -3,18 +3,16 @@ import 'package:fooddeliveryappmodified/common/styles/colors.dart';
 
 class ElevButton extends StatefulWidget {
   final String label;
-  final TextStyle labelstyle;
   final VoidCallback onPressed;
+  Color textColor;
+  Color bg;
 
-  const ElevButton({
+  ElevButton({
     Key? key,
     required this.label,
     required this.onPressed,
-    this.labelstyle = const TextStyle(
-      color: Colors.black,
-      fontWeight: FontWeight.bold,
-      fontSize: 16,
-    ),
+    this.textColor = Colors.black,
+    this.bg = fourthColor,
   });
 
   @override
@@ -27,7 +25,7 @@ class _ElevButtonState extends State<ElevButton> {
     return ElevatedButton(
       onPressed: widget.onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: fourthColor,
+        backgroundColor: widget.bg,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
         ),
@@ -36,7 +34,11 @@ class _ElevButtonState extends State<ElevButton> {
         width: double.infinity,
         child: Text(
           widget.label,
-          style: widget.labelstyle,
+          style: TextStyle(
+            color: widget.textColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
           textAlign: TextAlign.center,
         ),
       ),

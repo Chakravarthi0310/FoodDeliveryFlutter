@@ -5,36 +5,30 @@ import 'package:fooddeliveryappmodified/common/widgets/CustomQuantitySelector.da
 import 'package:fooddeliveryappmodified/common/widgets/ElevatedButton.dart';
 import 'package:fooddeliveryappmodified/globalVariables/HotelInformation.dart';
 import 'package:fooddeliveryappmodified/screens/AddressScreen.dart';
+import 'package:fooddeliveryappmodified/screens/OrderPlaced.dart';
 
-class CheckOutScreen extends StatefulWidget {
+class PlaceOrderScreen extends StatefulWidget {
   final Items item;
-  const CheckOutScreen({Key? key, required this.item});
+  int quantity;
+  PlaceOrderScreen({Key? key, required this.quantity, required this.item});
 
   @override
-  State<CheckOutScreen> createState() => _CheckOutScreenState();
+  State<PlaceOrderScreen> createState() => _PlaceOrderScreenState();
 }
 
-class _CheckOutScreenState extends State<CheckOutScreen> {
-  Image image = Image.asset(
-    'assets/images/Pizza.png',
-    height: 200,
-    width: 200,
-  );
-  String name = "Loaded Pizza";
+class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
   String type = "Regular";
-  double price = 175;
-  int quantity = 1;
 
   void increment() {
     setState(() {
-      quantity++;
+      widget.quantity++;
     });
   }
 
   void decrement() {
-    if (quantity > 1) {
+    if (widget.quantity > 1) {
       setState(() {
-        quantity--;
+        widget.quantity--;
       });
     }
   }
@@ -94,7 +88,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           height: 30,
                         ),
                         Text(
-                          "Rs.${widget.item.price}",
+                          "Rs.${widget.item.price * widget.quantity}",
                           style: TextStyle(
                               color: fourthColor,
                               fontWeight: FontWeight.bold,
@@ -103,7 +97,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         SizedBox(
                           height: 10,
                         ),
-                        QuantitySelector(quantity: quantity)
+                        QuantitySelector(quantity: widget.quantity)
                       ],
                     )
                   ],
@@ -131,7 +125,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                   fontSize: fontSizemd),
                             ),
                             Text(
-                              "${widget.item.price}",
+                              "${widget.item.price * widget.quantity}",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -153,7 +147,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                   fontSize: fontSizemd),
                             ),
                             Text(
-                              "${widget.item.price}",
+                              "${widget.item.price * widget.quantity}",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -210,30 +204,17 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           ],
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         ElevButton(
-                          label: "Voucher Code",
-                          onPressed: () {},
-                          bg: Colors.white,
-                          textColor: fourthColor,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        ElevButton(
-                            label: "Checkout",
+                            label: "Place Order",
                             bg: Colors.white,
                             textColor: fourthColor,
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (c) => AddressScreen(
-                                          item: widget.item,
-                                          quantity: quantity,
-                                          price:
-                                              widget.item.price.toInt() * 3)));
+                                      builder: (c) => OrderPlacedScreen()));
                             }),
                       ],
                     ),

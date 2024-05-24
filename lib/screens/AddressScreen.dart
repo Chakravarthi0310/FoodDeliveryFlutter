@@ -2,10 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:fooddeliveryappmodified/common/styles/colors.dart';
 import 'package:fooddeliveryappmodified/common/styles/sizes.dart';
 import 'package:fooddeliveryappmodified/common/widgets/searchBar.dart';
+import 'package:fooddeliveryappmodified/globalVariables/HotelInformation.dart';
 import 'package:fooddeliveryappmodified/globalVariables/UserAddresses.dart';
+import 'package:fooddeliveryappmodified/screens/placing_order_scree.dart';
 
 class AddressScreen extends StatefulWidget {
-  const AddressScreen({super.key});
+  final Items item;
+  final int quantity;
+  final int price;
+  const AddressScreen(
+      {super.key,
+      required this.item,
+      required this.quantity,
+      required this.price});
 
   @override
   State<AddressScreen> createState() => _AddressScreenState();
@@ -44,7 +53,13 @@ class _AddressScreenState extends State<AddressScreen> {
               height: 10,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (c) => PlaceOrderScreen(
+                              quantity: widget.quantity, item: widget.item)));
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: widgetBackgroundColor,
                     shape: RoundedRectangleBorder(

@@ -95,8 +95,8 @@ class _FoodScreenState extends State<FoodScreen> {
                             child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                primary: secondaryColor,
-                                onPrimary: fourthColor,
+                                foregroundColor: fourthColor,
+                                backgroundColor: secondaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 ),
@@ -119,8 +119,8 @@ class _FoodScreenState extends State<FoodScreen> {
                             child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                primary: secondaryColor,
-                                onPrimary: fourthColor,
+                                foregroundColor: fourthColor,
+                                backgroundColor: secondaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 ),
@@ -143,8 +143,8 @@ class _FoodScreenState extends State<FoodScreen> {
                             child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                primary: secondaryColor,
-                                onPrimary: fourthColor,
+                                foregroundColor: fourthColor,
+                                backgroundColor: secondaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 ),
@@ -167,8 +167,8 @@ class _FoodScreenState extends State<FoodScreen> {
                             child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                primary: secondaryColor,
-                                onPrimary: fourthColor,
+                                foregroundColor: fourthColor,
+                                backgroundColor: secondaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 ),
